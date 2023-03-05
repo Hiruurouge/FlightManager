@@ -1,0 +1,28 @@
+<div>
+  <h2>Update Plane</h2>
+  <form #planeForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Code:</label>
+      <input type="text" name="code" [(ngModel)]="plane.code" required>
+    </div>
+    <div>
+      <label>Modele:</label>
+      <input type="text" name="modele" [(ngModel)]="plane.model" required>
+    </div>
+    <div>
+      <label>Capacité:</label>
+      <input type="number" name="capacite" [(ngModel)]="plane.passNumber" required>
+    </div>
+    <div>
+      <label>Autonomie:</label>
+      <input type="number" name="autonomie" [(ngModel)]="plane.autonomy" required>
+    </div>
+    <div>
+      <label>Type:</label>
+      <input type="text" name="type" [(ngModel)]="plane.type" required>
+    </div>
+    <button *ngIf="id" type="submit">Update</button>
+    <button *ngIf="!id" type="submit">Add</button>
+
+  </form>
+</div>

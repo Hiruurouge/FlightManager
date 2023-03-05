@@ -1,0 +1,30 @@
+<section>
+  <form id="newProfile" #f="ngForm" style="padding: 1rem; border: 1px solid; border-radius: 0.5rem;">
+    <h1 id="header" style="margin-bottom: 1rem;">Personals Form</h1>
+    <div style="margin-bottom: 1rem;">
+      <label  style="display: block;">Name:</label>
+      <input [(ngModel)]="personnel.data.name" name="nom" required placeholder="Enter your name" style="width: 100%; padding: 0.5rem; border-radius: 0.25rem; border: 1px solid;">
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <label  style="display: block;">Firstname:</label>
+      <input [(ngModel)]="personnel.data.firstname" name="prenom" required placeholder="Enter your firstname" style="width: 100%; padding: 0.5rem; border-radius: 0.25rem; border: 1px solid;">
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <label style="display: block;">Habilitation:</label>
+      <select name="habilitation" #ctlId="ngModel" [(ngModel)]="personnel.data.work" required style="width: 100%; padding: 0.5rem; border-radius: 0.25rem; border: 1px solid;">
+        <option selected hidden value="">Choose your habilitation</option>
+        <option value="Pilote">Pilote</option>
+        <option value="Copilote">Copilote</option>
+        <option value="PNC">PNC</option>
+      </select>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+      <button *ngIf="id" (click)="onSubmit()" name="update"  [disabled]="f.invalid" style="padding: 0.5rem 1rem; border-radius: 1rem; margin-right: 0.5rem; background-color: #007bff; color: #fff; border: none;">Update</button>
+      <button *ngIf="!id" (click)="onSubmit()" name="add"  [disabled]="f.invalid" style="padding: 0.5rem 1rem; border-radius: 1rem; margin-right: 0.5rem; background-color: green; color: #fff; border: none;">Add</button>
+
+    </div>
+  </form>
+</section>

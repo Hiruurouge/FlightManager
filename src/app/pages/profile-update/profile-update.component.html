@@ -1,0 +1,22 @@
+<div>
+  <h2>Update Profile</h2>
+  <form #profileForm="ngForm" (ngSubmit)="update()">
+    <div>
+      <label >First Name:</label>
+      <input type="text" name="firstName" [(ngModel)]="uServ.user.firstname" required>
+    </div>
+    <div>
+      <label>Last Name:</label>
+      <input type="text" name="lastName" [(ngModel)]="uServ.user.name" required>
+    </div>
+    <div>
+      <label >Photo URL:</label>
+      <input type="text" name="photoUrl" [(ngModel)]="uServ.user.photoURL">
+    </div>
+    <div>
+      <label >Tel</label>
+      <input type="text" name="tel" [(ngModel)]="uServ.user.tel">
+    </div>
+    <button type="submit">Update</button>
+  </form>
+</div>

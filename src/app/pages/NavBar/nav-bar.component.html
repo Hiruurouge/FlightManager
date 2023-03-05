@@ -1,0 +1,33 @@
+<nav *ngIf="authService.userService.user.status" class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" *ngIf="authService.userService.user.status; else redirectUrl" routerLink="/intranet">FlightManager</a>
+  <ng-template #redirectUrl>
+    <a routerLink="/">Go to Home</a>
+  </ng-template>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/profil">Profil</a>
+        </li>
+        <li class="dropdown">
+          <a class="nav-link" routerLink="/intranet" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Intranet
+          </a>
+          <div class="dropdown-content">
+            <a class="dropdown-item" routerLink="/intranet">All Flights</a>
+            <a class="dropdown-item" routerLink="/intranet/plane">All planes</a>
+            <a class="dropdown-item" routerLink="/intranet/workers">All Workers</a>
+            <a class="dropdown-item" routerLink="/intranet/manageAirports">All Airports</a>
+          </div>
+        </li>
+        <li class="nav-item" *ngIf="authService.userService.user.status == 'admin'">
+          <a class="nav-link" routerLink="/intranet/userManagement"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User Management
+          </a>
+        </li>
+      </ul>
+    </div>
+</nav>

@@ -1,0 +1,36 @@
+<section>
+    <p class="h1">Workers Management</p>
+    <br>
+  <button class="btn btn-success" style="margin-bottom: 1rem" [routerLink]="['/intranet/workersManagement']">Update</button>
+  <br>
+  <div class="input-group mb-3 col-md-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+          </div>
+          <input  [(ngModel)]="workerFiler" name="filtre" type="text" class="form-control" placeholder="Search">
+        </div>
+        <br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>First Name Modèle</th>
+                    <th>Work</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tbody>
+                <tr *ngFor="let p of workerService.workers | Worker:workerFiler" (click)="selectPersonnel(p.id)" >
+                    <td data-label="Account">{{p.data.name}}</td>
+                    <td data-label="Due Date">{{p.data.firstname}}</td>
+                    <td data-label="Amount">{{p.data.work}}</td>
+                    <td>
+                      <button class="btn btn-warning" [routerLink]="['/intranet/workersManagement']" [queryParams]="{id:p.id}">Update</button>
+                      <button class="btn btn-danger" style="margin:0.5rem " (click)="deletePersonnel(p.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+

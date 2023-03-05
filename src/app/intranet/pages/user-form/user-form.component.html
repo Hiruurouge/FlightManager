@@ -1,0 +1,67 @@
+<section>
+    <div class="box-main">
+      <div id="updateProfile" class="row">
+        <div class="col-md-8 user-right">
+          <h2>User Manage</h2>
+        </div>
+      </div>
+
+      <form id="newProfile" #f="ngForm" class="form-horizontal">
+        <h1 id="header">Add USER</h1>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input [(ngModel)]="user.name" name="nom" required placeholder="Name" class="form-control text-center">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input [(ngModel)]="user.firstname" name="prenom" required placeholder="Firstname" class="form-control text-center">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input [(ngModel)]="user.tel" name="tel" placeholder="PhoneNumber" class="form-control text-center">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input [(ngModel)]="user.photoURL" name="photoURL" placeholder="photoURL" class="form-control text-center">
+          </div>
+        </div>
+
+        <div *ngIf="!id" class="form-group">
+          <div class="col-sm-12">
+            <input [(ngModel)]="userId.mail" name="mail" required placeholder="mail" class="form-control text-center">
+          </div>
+        </div>
+
+        <div *ngIf="!id" class="form-group">
+          <div class="col-sm-12">
+            <input type="password" [(ngModel)]="userId.password" name="password" required placeholder="password" class="form-control text-center">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <select class="form-control" name="statut" #ctlId="ngModel" [(ngModel)]="user.status" required >
+              <option selected hidden value="">Statut</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-12 text-center">
+            <button *ngIf="id" class="btn btn-warning" (click)="updateUser()">Update</button>
+            <button *ngIf="!id" (click)="createUser()" name="add" id="sendData" [disabled]="f.invalid" class="btn btn-primary btn-rounded">Add</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>

@@ -1,0 +1,46 @@
+<section>
+    <p class="h1">Flight Management</p>
+    <br>
+        <div class="input-group mb-3 col-md-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+          </div>
+          <input  [(ngModel)]="searchText" name="filtre" type="text" class="form-control" placeholder="Search">
+        </div>
+        <br>
+        <input type="button" value="Add New Flight" [routerLink]="['/intranet/manageFlight']" class="btn">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Plane </th>
+                    <th>Date</th>
+                    <th>Workers</th>
+                    <th>Departure Airport</th>
+                    <th>Arrival Airport</th>
+                    <th>Duration</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let flight of companyService.flights | tableFilter:searchText" (click)="selectVols(flight.id)" >
+                    <td data-label="Account">{{flight.data.code}}</td>
+                    <td data-label="Due Date">{{flight.data.plane.modele}}</td>
+                    <td data-label="Amount">{{flight.data.date}}</td>
+                    <td data-label="Amount">
+                        <ul *ngFor="let p of flight.data.workers">
+                            <li>{{p}}</li>
+                        </ul>
+                    </td>
+                    <td data-label="Amount">{{flight.data.DepartureAirport}}</td>
+                    <td data-label="Amount">{{flight.data.ArrivalAirport}}</td>
+                    <td data-label="Amount">{{flight.data.duration}}</td>
+                    <td>
+                      <button class="btn btn-warning" [routerLink]="['/intranet/manageFlight']" [queryParams]="{id:flight.data.code}">Update</button>
+                      <button class="btn btn-danger" style="margin: 1rem" (click)="deleteVols(flight.data.code)" >Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+</section>

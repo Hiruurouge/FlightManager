@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "prendstonvol-92cae": {
+      "hosting": {
+        "myApplication": [
+          "prendstonvol-92cae"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "prendstonvol-92cae"
+  }
+}

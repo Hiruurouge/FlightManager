@@ -1,0 +1,41 @@
+<section>
+  <form (ngSubmit)="onSubmit()" #addAvsForm="ngForm" class="mx-auto">
+    <div>
+      <label>Code:</label>
+      <input type="text" name="code" [(ngModel)]="newAvs.code" required>
+    </div>
+    <div>
+      <label>Modèle d'avion:</label>
+      <select name="model" [(ngModel)]="newAvs.plane.model" required>
+        <option *ngFor="let model of models" [value]="model.model">{{ model.model }}</option>
+      </select>
+    </div>
+    <div>
+      <label >Date:</label>
+      <input type="date" name="date" [(ngModel)]="newAvs.date" required>
+    </div>
+    <div>
+      <label>Personnel de vol:</label>
+      <select name="personnel" [(ngModel)]="newAvs.workers" multiple required>
+        <option *ngFor="let personnel of nomsComposes" [value]="personnel">{{ personnel }}</option>
+      </select>
+    </div>
+    <div>
+      <label>Aéroport de départ:</label>
+      <select name="depart" [(ngModel)]="newAvs.DepartureAirport" required>
+        <option *ngFor="let airport of nomsAeroports" [value]="airport">{{ airport }}</option>
+      </select>
+    </div>
+    <div>
+      <label >Aéroport d'arrivée:</label>
+      <select name="arrivee" [(ngModel)]="newAvs.ArrivalAirport" required>
+        <option *ngFor="let airport of nomsAeroports" [value]="airport">{{ airport }}</option>
+      </select>
+    </div>
+    <div>
+      <label >Durée:</label>
+      <input type="text" name="duree" [(ngModel)]="newAvs.duration" required>
+    </div>
+    <button type="submit">Ajouter</button>
+  </form>
+</section>

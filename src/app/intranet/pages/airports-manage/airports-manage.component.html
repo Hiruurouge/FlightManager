@@ -1,0 +1,33 @@
+<div class="input-group" style="margin-bottom: 0.5rem">
+  <span class="input-group-text">
+    <i class="bi bi-search"></i>
+  </span>
+  <input type="text" class="custom-search-field" placeholder="Search airports" [(ngModel)]="searchTerm" (ngModelChange)="filterAirports()">
+</div>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Country</th>
+    <th>IATA Code</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let airport of currentAirports | paginateAirports:currentPage:pageSize">
+    <td>{{ airport.name }}</td>
+    <td>{{ airport.city }}</td>
+    <td>{{ airport.country }}</td>
+    <td>{{ airport.iata_code }}</td>
+    <td>{{ airport._geoloc.lat }}</td>
+    <td>{{ airport._geoloc.lng }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="pagination">
+  <button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">Previous</button>
+  <button [disabled]="currentPage === totalPagesArray.length" (click)="goToPage(currentPage + 1)">Next</button>
+</div>
