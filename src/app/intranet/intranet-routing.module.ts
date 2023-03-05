@@ -10,19 +10,24 @@ import { AddAvsComponent } from './pages/add-avs/add-avs.component';
 import {AirportsManageComponent} from './pages/airports-manage/airports-manage.component'
 import {PlaneManagementComponent} from "./pages/plane-management/plane-management.component";
 import {WorkersManagementComponent} from "./pages/workers-management/workers-management.component";
+import { AdminGuard} from "./security/admin.guard";
 
 const routes: Routes = [
   { path:'', component:HomeComponent, children:[
-    { path:'', component:FlightsComponent },
-    { path:'plane', component:PlaneComponent },
-    { path:'workers', component:WorkersComponent },
-    { path:'userManagement', component:UserManagementComponent},
-    { path:'userForm', component:UserFormComponent},
-    {path:'manageFlight',component:AddAvsComponent},
-    {path:'manageAirports',component:AirportsManageComponent},
-    {path:'planeManagement',component:PlaneManagementComponent},
-    {path:'workersManagement',component:WorkersManagementComponent}
-  ]}
+      { path:'', component:FlightsComponent },
+      { path:'plane', component:PlaneComponent },
+      { path:'workers', component:WorkersComponent },
+      {
+        path:'userManagement',
+        component:UserManagementComponent,
+        canActivate: [AdminGuard] // Add AdminGuard to the canActivate property
+      },
+      { path:'userForm', component:UserFormComponent,canActivate: [AdminGuard]},
+      {path:'manageFlight',component:AddAvsComponent},
+      {path:'manageAirports',component:AirportsManageComponent},
+      {path:'planeManagement',component:PlaneManagementComponent},
+      {path:'workersManagement',component:WorkersManagementComponent}
+    ]}
 ];
 
 @NgModule({
